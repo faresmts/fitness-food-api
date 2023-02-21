@@ -35,11 +35,26 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-
     protected $connection = 'mongodb';
-
     protected $collection = 'products';
 
+    const STATUS = [
+        'DRAFT' => 'draft',
+        'TRASH' => 'trash',
+        'PUBLISHED' => 'published'
+    ];
 
+    const NUTRISCORE_SCORE = [
+        'MIN' => -15,
+        'MAX' => 40
+    ];
+
+    const NUTRISCORE_GRADE = [
+        'A' => 'a',
+        'B' => 'b',
+        'C' => 'c',
+        'D' => 'd',
+        'E' => 'e'
+    ];
 }
 
