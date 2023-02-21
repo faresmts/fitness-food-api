@@ -96,7 +96,7 @@ return [
         'mongodb' => [
             'driver' => 'mongodb',
             'dsn' => env('DB_URI', ''),
-            'database' => 'fares',
+            'database' => 'fitness-foods-api',
         ]
 
     ],
