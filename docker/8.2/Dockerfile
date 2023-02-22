@@ -40,6 +40,8 @@ RUN apt-get update \
     && apt-get install -y mysql-client \
     && apt-get install -y postgresql-client-$POSTGRES_VERSION \
     && apt-get install -y cron \
+    && apt install -y zlib1g-dev libpng-dev \
+    && rm -rf /var/lib/apt/lists/* \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

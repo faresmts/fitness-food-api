@@ -14,7 +14,7 @@ class ProductFactory extends Factory
     {
         return [
             '_id' => Str::uuid(),
-            'code' => fake()->numberBetween(10000000, 99999999),
+            'code' => fake()->numerify('########'),
             'status' => 'published',
             'imported_t' => Carbon::now(),
             'url' => fake()->url,

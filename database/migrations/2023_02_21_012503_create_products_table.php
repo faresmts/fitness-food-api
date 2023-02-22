@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->string('_id', 128);
-            $table->integer('code');
+            $table->string('code');
             $table->enum('status', ['published','draft', 'trash']);
             $table->timestamp('imported_t');
             $table->string('url', 100);
