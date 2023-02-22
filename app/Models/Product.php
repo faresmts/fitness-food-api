@@ -44,19 +44,6 @@ class Product extends Model
         'PUBLISHED' => 'published'
     ];
 
-    CONST NUTRISCORE_SCORE = [
-        'MIN' => -15,
-        'MAX' => 40
-    ];
-
-    CONST NUTRISCORE_GRADE = [
-        'A' => 'a',
-        'B' => 'b',
-        'C' => 'c',
-        'D' => 'd',
-        'E' => 'e'
-    ];
-
     CONST MAX_PRODUCTS_READ = 100;
 
     CONST URLS = [
