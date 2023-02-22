@@ -2,11 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Cron;
 use App\Models\Product;
 use App\Services\ProductService;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 
 class ProductsDatabaseUpdateCommand extends Command
 {
@@ -39,20 +40,28 @@ class ProductsDatabaseUpdateCommand extends Command
      */
     public function handle(): int
     {
-        Log::info('executando');
         $dataCount = 0;
+        $errors = [];
         foreach ( Product::URLS as $url){
             $fileName = 'https://challenges.coode.sh/food/data/json/' . $url;
 
             try {
                 $dataCount += $this->tryUpdateData($fileName);
             }catch (Exception $e){
-                Log::info($e->getMessage());
+                $errors[] = $e->getMessage();
                 sleep(60);
                 $dataCount += $this->tryUpdateData($fileName);
                 continue;
             }
         }
+
+        $cron = new Cron();
+        $cron->sucess = $dataCount === 900;
+        $cron->errors = json_encode($errors);
+        $cron->runtime_date = Carbon::now()->format('Y-m-d H:i:s');
+        $cron->inserted_quantity = $dataCount;
+
+        $cron->save();
 
         return $dataCount;
     }
@@ -61,7 +70,13 @@ class ProductsDatabaseUpdateCommand extends Command
     {
         $tryDataCount = 0;
 
-        $file = gzopen($fileName, 'r');
+        try{
+            $file = gzopen($fileName, 'r');
+        }catch (Exception $e){
+            sleep(60);
+            $tryDataCount += $this->tryUpdateData($fileName);
+            return $tryDataCount;
+        }
 
         $lines = [];
 

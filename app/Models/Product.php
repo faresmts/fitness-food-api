@@ -10,7 +10,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
 /**
  * @property string $code
  * @property string $status
- * @property string $imported_t
+ * @property Carbon $imported_t
  * @property string $url
  * @property string $creator
  * @property string $created_t
@@ -37,6 +37,8 @@ class Product extends Model
     use HasFactory;
     protected $connection = 'mongodb';
     protected $collection = 'products';
+
+    public $timestamps = false;
 
     CONST STATUS = [
         'DRAFT' => 'draft',
