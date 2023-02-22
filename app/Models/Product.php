@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
 
 /**
- * @property int $code
+ * @property string $code
  * @property string $status
- * @property Carbon $imported_t
+ * @property string $imported_t
  * @property string $url
  * @property string $creator
- * @property Carbon $created_t
- * @property Carbon $last_modified_t
+ * @property string $created_t
+ * @property string $last_modified_t
  * @property string $product_name
  * @property string $quantity
  * @property string $brands
@@ -26,7 +26,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
  * @property string $ingredients_text
  * @property string $traces
  * @property string $serving_size
- * @property double $serving_quantity
+ * @property ?double $serving_quantity
  * @property int $nutriscore_score
  * @property string $nutriscore_grade
  * @property string $main_category
@@ -38,23 +38,36 @@ class Product extends Model
     protected $connection = 'mongodb';
     protected $collection = 'products';
 
-    const STATUS = [
+    CONST STATUS = [
         'DRAFT' => 'draft',
         'TRASH' => 'trash',
         'PUBLISHED' => 'published'
     ];
 
-    const NUTRISCORE_SCORE = [
+    CONST NUTRISCORE_SCORE = [
         'MIN' => -15,
         'MAX' => 40
     ];
 
-    const NUTRISCORE_GRADE = [
+    CONST NUTRISCORE_GRADE = [
         'A' => 'a',
         'B' => 'b',
         'C' => 'c',
         'D' => 'd',
         'E' => 'e'
     ];
-}
 
+    CONST MAX_PRODUCTS_READ = 100;
+
+    CONST URLS = [
+        'products_01.json.gz',
+        'products_02.json.gz',
+        'products_03.json.gz',
+        'products_04.json.gz',
+        'products_05.json.gz',
+        'products_06.json.gz',
+        'products_07.json.gz',
+        'products_08.json.gz',
+        'products_09.json.gz'
+    ];
+}

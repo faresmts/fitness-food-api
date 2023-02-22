@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ProductFactory extends Factory
 {
@@ -12,9 +13,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'code' => fake()->numberBetween(10000000, 99999999),
+            '_id' => Str::uuid(),
+            'code' => fake()->numerify('########'),
             'status' => 'published',
-            'imported_t' => Carbon::now()->timestamp(),
+            'imported_t' => Carbon::now(),
             'url' => fake()->url,
             'creator' => fake()->name(),
             'created_t' => fake()->unixTime(),
