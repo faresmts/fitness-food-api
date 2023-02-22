@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
-
+use App\Http\Resources\SystemInfoResource;
+use App\Services\SystemService;
 
 class SystemController extends Controller
 {
-    public function info(): JsonResponse
+    private SystemService $service;
+
+    public function __construct(SystemService $service)
     {
+        $this->service = $service;
+    }
+    public function info(): SystemInfoResource
+    {
+        return new SystemInfoResource($this->service->getSystemData());
     }
 }
