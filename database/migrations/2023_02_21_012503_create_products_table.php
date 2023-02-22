@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->string('_id', 128);
             $table->integer('code');
             $table->enum('status', ['published','draft', 'trash']);
             $table->timestamp('imported_t');

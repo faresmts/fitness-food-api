@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
 
 /**
+ * @property string $_id
  * @property int $code
  * @property string $status
  * @property Carbon $imported_t
