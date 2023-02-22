@@ -40,6 +40,8 @@ class ProductsDatabaseUpdateCommand extends Command
      */
     public function handle(): int
     {
+        Product::truncate();
+
         $dataCount = 0;
         $errors = [];
         foreach ( Product::URLS as $url){
