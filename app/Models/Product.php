@@ -10,7 +10,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
 /**
  * @property string $code
  * @property string $status
- * @property string $imported_t
+ * @property Carbon $imported_t
  * @property string $url
  * @property string $creator
  * @property string $created_t
@@ -38,23 +38,12 @@ class Product extends Model
     protected $connection = 'mongodb';
     protected $collection = 'products';
 
+    public $timestamps = false;
+
     CONST STATUS = [
         'DRAFT' => 'draft',
         'TRASH' => 'trash',
         'PUBLISHED' => 'published'
-    ];
-
-    CONST NUTRISCORE_SCORE = [
-        'MIN' => -15,
-        'MAX' => 40
-    ];
-
-    CONST NUTRISCORE_GRADE = [
-        'A' => 'a',
-        'B' => 'b',
-        'C' => 'c',
-        'D' => 'd',
-        'E' => 'e'
     ];
 
     CONST MAX_PRODUCTS_READ = 100;
