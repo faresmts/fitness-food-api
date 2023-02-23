@@ -14,6 +14,7 @@ class SystemEnv extends Model
     use HasFactory;
 
     CONST CURRENT_SYSTEM_VERSION = 1;
+    CONST DATABASE_NAME = 'fitness-foods-api';
 
     protected $connection = 'mongodb';
     protected $collection = 'system_env';
