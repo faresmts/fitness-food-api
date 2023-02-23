@@ -3,10 +3,8 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SystemController;
 use App\Http\Middleware\FitnessFoodsAuth;
-use App\Models\ApiKey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +30,3 @@ Route::middleware([
         ->except('store')
         ->names('products');
 });
-
