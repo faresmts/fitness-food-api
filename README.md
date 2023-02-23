@@ -40,7 +40,7 @@ FitnessFoods API é uma REST API que utiliza os dados do projeto Open Food Facts
 -  fiz todo o projeto no JIRA para me organizar melhor em tasks e ter um melhor fluxo. Melhor investir um pouco de tempo se organizando para ter mais produtividade no futuro.
 -  além disso, consegui particionar o projeto e com isso consigo ver melhor não somente o todo, mas também cada etapa bem detalhada.
 
-![[./resources/img/imagem1.png]]
+![Image1](https://raw.githubusercontent.com/faresmts/fitness-foods-api/main/resources/img/imagem1.png)
 
 
 
@@ -54,7 +54,7 @@ FitnessFoods API é uma REST API que utiliza os dados do projeto Open Food Facts
 
 - Após isso, comecei a task CCTP-11 : Criar Model, Factory e Migration de Product + MongoDB Schema. Fazer por task me coloca em um estado mais produtivo e consigo me organizar melhor com o versionamento da aplicação. 
 
-```JSON
+```
 db.createCollection("products", {
     validator: {
         $jsonSchema: {
@@ -177,7 +177,7 @@ db.createCollection("products", {
 dos campos concentrada na aplicação e o banco de dados sem validação. 
 - Desse modo, consigo ainda ter uma solidez nas informações persistidas em nossa database.
 
-![[./resources/img/imagem2.png]]
+![Image2](https://raw.githubusercontent.com/faresmts/fitness-foods-api/main/resources/img/imagem2.png)
 ### Day 3
 fiz a implementação do sistema de Cron e tive dois grandes desafios:
   1. Criar um cron dentro do container, melhorando meus conhecimentos de Docker e Dockerfile
