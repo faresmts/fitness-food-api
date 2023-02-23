@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SystemController;
+use App\Http\Middleware\FitnessFoodsAuth;
+use App\Models\ApiKey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', [SystemController::class, 'info'])->name('system.info');
+Route::middleware([
+    FitnessFoodsAuth::class
+])->group(function () {
+    Route::get('/', [SystemController::class, 'info'])->name('system.info');
 
-Route::apiResource('/products', ProductController::class)
-    ->except('store')
-    ->names('products');
+    Route::apiResource('/products', ProductController::class)
+        ->except('store')
+        ->names('products');
+});
 
